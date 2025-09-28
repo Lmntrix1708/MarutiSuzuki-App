@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
+    <title>Maruti Suzuki SuperApp</title>
+    <link rel="stylesheet" href="style.css">
+    <meta name="theme-color" content="#01458E">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+</head>
+<body>
+    <!-- Mobile Phone Container -->
+    <div class="phone-container">
+        <!-- Status Bar -->
+        <div class="status-bar">
+            <div class="status-left">
+                <span class="time" id="currentTime">9:41</span>
+            </div>
+            <div class="status-center">
+                <div class="notch"></div>
+            </div>
+            <div class="status-right">
+                <span class="signal-icon">📶</span>
+                <span class="wifi-icon">📶</span>
+                <span class="battery-icon">🔋</span>
+                <span class="battery-percent">100%</span>
+            </div>
+        </div>
+
+        <!-- App Screen -->
+        <div class="app-screen">
+            <!-- App Header -->
+            <header class="app-header">
+                <div class="header-content">
+                    <div class="user-section">
+                        <div class="user-avatar">SM</div>
+                        <div class="user-info">
+                            <span class="greeting">Good afternoon</span>
+                            <span class="user-name">Soham Mehta</span>
+                        </div>
+                    </div>
+                    <div class="header-actions">
+                        <button class="header-btn" id="notificationBtn">
+                            <span class="notification-dot"></span>
+                            🔔
+                        </button>
+                        <button class="header-btn" id="menuBtn">☰</button>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Main Content -->
+            <main class="main-content">
+                <!-- Home Tab -->
+                <section class="tab-content active" id="homeTab">
+                    <!-- Loyalty Card -->
+                    <div class="loyalty-card">
+                        <div class="card-header">
+                            <h3>Maruti Rewards</h3>
+                            <span class="tier-badge silver">Silver</span>
+                        </div>
+                        <div class="points-section">
+                            <div class="points-display">2,450</div>
+                            <div class="points-label">Points Available</div>
+                        </div>
+                        <div class="card-footer">
+                            <span>550 more points to Gold</span>
+                            <button class="redeem-btn">Redeem</button>
+                        </div>
+                    </div>
+
+                    <!-- Quick Actions Grid -->
+                    <div class="section-header">
+                        <h2>Quick Actions</h2>
+                    </div>
+                    <div class="quick-actions-grid">
+                        <div class="action-card" onclick="handleQuickAction('bookService')">
+                            <div class="action-icon">🔧</div>
+                            <span class="action-text">Book Service</span>
+                        </div>
+                        <div class="action-card" onclick="handleQuickAction('remoteLock')">
+                            <div class="action-icon">🔐</div>
+                            <span class="action-text">Remote Lock</span>
+                        </div>
+                        <div class="action-card" onclick="handleQuickAction('findDealer')">
+                            <div class="action-icon">📍</div>
+                            <span class="action-text">Find Dealer</span>
+                        </div>
+                        <div class="action-card" onclick="handleQuickAction('arShowroom')">
+                            <div class="action-icon">🥽</div>
+                            <span class="action-text">AR Showroom</span>
+                        </div>
+                        <div class="action-card" onclick="handleQuickAction('fuelPrices')">
+                            <div class="action-icon">⛽</div>
+                            <span class="action-text">Fuel Prices</span>
+                        </div>
+                        <div class="action-card" onclick="handleQuickAction('insurance')">
+                            <div class="action-icon">🛡️</div>
+                            <span class="action-text">Insurance</span>
+                        </div>
+                        <div class="action-card" onclick="handleQuickAction('roadsideHelp')">
+                            <div class="action-icon">🚗</div>
+                            <span class="action-text">Roadside Help</span>
+                        </div>
+                        <div class="action-card" onclick="handleQuickAction('tradeIn')">
+                            <div class="action-icon">💰</div>
+                            <span class="action-text">Trade-in</span>
+                        </div>
+                    </div>
+
+                    <!-- Service Reminder -->
+                    <div class="service-reminder-card">
+                        <div class="reminder-icon">🔧</div>
+                        <div class="reminder-content">
+                            <h3>Service Due</h3>
+                            <p>Your Swift VXI service is due on Oct 15, 2025</p>
+                            <span class="due-in">Due in 15 days</span>
+                        </div>
+                        <button class="book-service-btn">Book Now</button>
+                    </div>
+
+                    <!-- Your Vehicle -->
+                    <div class="section-header">
+                        <h2>Your Vehicle</h2>
+                    </div>
+                    <div class="vehicle-status-card">
+                        <div class="vehicle-info">
+                            <h3>Swift VXI 2023</h3>
+                            <p>UP 14 XX 1234</p>
+                        </div>
+                        <div class="status-indicators">
+                            <div class="status-item">
+                                <span class="status-icon">⛽</span>
+                                <span class="status-text">75%</span>
+                            </div>
+                            <div class="status-item">
+                                <span class="status-icon">🔋</span>
+                                <span class="status-text">89%</span>
+                            </div>
+                            <div class="status-item locked">
+                                <span class="status-icon">🔒</span>
+                                <span class="status-text">Locked</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Recent Activity -->
+                    <div class="section-header">
+                        <h2>Recent Activity</h2>
+                    </div>
+                    <div class="activity-list">
+                        <div class="activity-item">
+                            <div class="activity-icon service">🔧</div>
+                            <div class="activity-content">
+                                <h4>Service Completed</h4>
+                                <p>General Service • August 15</p>
+                            </div>
+                            <span class="activity-amount">₹3,500</span>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon fuel">⛽</div>
+                            <div class="activity-content">
+                                <h4>Fuel Savings</h4>
+                                <p>Eco driving this month</p>
+                            </div>
+                            <span class="activity-amount">₹240</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Cars Tab -->
+                <section class="tab-content" id="carsTab">
+                    <!-- Search Bar -->
+                    <div class="search-container">
+                        <div class="search-bar">
+                            <span class="search-icon">🔍</span>
+                            <input type="text" placeholder="Search cars..." class="search-input" id="carSearch">
+                        </div>
+                        <button class="filter-btn" id="filterBtn">
+                            <span>⚙️</span>
+                        </button>
+                    </div>
+
+                    <!-- Category Chips -->
+                    <div class="category-chips">
+                        <button class="chip active" data-category="all">All</button>
+                        <button class="chip" data-category="Arena">Arena</button>
+                        <button class="chip" data-category="Nexa">Nexa</button>
+                        <button class="chip" data-category="electric">Electric</button>
+                    </div>
+
+                    <!-- Vehicle Cards -->
+                    <div class="vehicles-container" id="vehiclesContainer">
+                        <!-- Vehicle cards will be populated by JavaScript -->
+                    </div>
+                </section>
+
+                <!-- Connect Tab -->
+                <section class="tab-content" id="connectTab">
+                    <!-- Vehicle Control Header -->
+                    <div class="control-header">
+                        <h2>Vehicle Control</h2>
+                        <div class="connection-status online">
+                            <div class="status-dot"></div>
+                            <span>Online</span>
+                        </div>
+                    </div>
+
+                    <!-- Remote Controls -->
+                    <div class="remote-controls">
+                        <div class="control-row">
+                            <button class="control-btn" onclick="toggleLock()">
+                                <div class="control-icon">🔐</div>
+                                <span class="control-text">Lock/Unlock</span>
+                            </button>
+                            <button class="control-btn" onclick="startEngine()">
+                                <div class="control-icon">🚗</div>
+                                <span class="control-text">Start Engine</span>
+                            </button>
+                        </div>
+                        <div class="control-row">
+                            <button class="control-btn" onclick="toggleAC()">
+                                <div class="control-icon">❄️</div>
+                                <span class="control-text">Climate</span>
+                            </button>
+                            <button class="control-btn" onclick="locateVehicle()">
+                                <div class="control-icon">📍</div>
+                                <span class="control-text">Find My Car</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Trip Statistics -->
+                    <div class="section-header">
+                        <h2>This Month</h2>
+                    </div>
+                    <div class="trip-stats">
+                        <div class="stat-card">
+                            <div class="stat-value">1,250</div>
+                            <div class="stat-label">km driven</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value">85</div>
+                            <div class="stat-label">Driving Score</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value">₹3,200</div>
+                            <div class="stat-label">Fuel Cost</div>
+                        </div>
+                    </div>
+
+                    <!-- SmartPlay Remote -->
+                    <div class="smartplay-section">
+                        <h3>SmartPlay Remote</h3>
+                        <div class="media-player">
+                            <div class="now-playing">
+                                <span class="track-info">🎵 Radio Mirchi FM</span>
+                            </div>
+                            <div class="media-controls">
+                                <button class="media-btn">⏮️</button>
+                                <button class="media-btn play-btn" onclick="togglePlayback()">▶️</button>
+                                <button class="media-btn">⏭️</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Services Tab -->
+                <section class="tab-content" id="servicesTab">
+                    <!-- Service Categories -->
+                    <div class="service-categories">
+                        <div class="service-category" onclick="bookService()">
+                            <div class="category-icon">🔧</div>
+                            <div class="category-content">
+                                <h3>Book Service</h3>
+                                <p>Schedule maintenance</p>
+                            </div>
+                            <span class="arrow">›</span>
+                        </div>
+                        <div class="service-category" onclick="viewParts()">
+                            <div class="category-icon">🔩</div>
+                            <div class="category-content">
+                                <h3>Genuine Parts</h3>
+                                <p>Order spare parts</p>
+                            </div>
+                            <span class="arrow">›</span>
+                        </div>
+                        <div class="service-category" onclick="renewInsurance()">
+                            <div class="category-icon">🛡️</div>
+                            <div class="category-content">
+                                <h3>Insurance</h3>
+                                <p>Renew policy</p>
+                            </div>
+                            <span class="arrow">›</span>
+                        </div>
+                        <div class="service-category" onclick="roadsideAssistance()">
+                            <div class="category-icon">🚨</div>
+                            <div class="category-content">
+                                <h3>Roadside Help</h3>
+                                <p>Emergency assistance</p>
+                            </div>
+                            <span class="arrow">›</span>
+                        </div>
+                    </div>
+
+                    <!-- Service History -->
+                    <div class="section-header">
+                        <h2>Service History</h2>
+                    </div>
+                    <div class="service-history">
+                        <div class="history-item">
+                            <div class="history-date">
+                                <span class="date">15</span>
+                                <span class="month">Aug</span>
+                            </div>
+                            <div class="history-content">
+                                <h4>General Service</h4>
+                                <p>Oil change, filter replacement</p>
+                                <span class="service-center">Arena Service Center</span>
+                            </div>
+                            <span class="history-amount">₹3,500</span>
+                        </div>
+                        <div class="history-item">
+                            <div class="history-date">
+                                <span class="date">20</span>
+                                <span class="month">May</span>
+                            </div>
+                            <div class="history-content">
+                                <h4>Paid Service</h4>
+                                <p>15,000 km service</p>
+                                <span class="service-center">Arena Service Center</span>
+                            </div>
+                            <span class="history-amount">₹5,200</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Profile Tab -->
+                <section class="tab-content" id="profileTab">
+                    <!-- User Profile Header -->
+                    <div class="profile-header">
+                        <div class="profile-avatar large">SM</div>
+                        <h2>Soham Mehta</h2>
+                        <p>soham.mehta2k@gmail.com</p>
+                        <p class="location">📍 Ghaziabad</p>
+                    </div>
+
+                    <!-- Profile Stats -->
+                    <div class="profile-stats">
+                        <div class="stat-item">
+                            <div class="stat-number">2,450</div>
+                            <div class="stat-text">Points</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">Silver</div>
+                            <div class="stat-text">Tier</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">1</div>
+                            <div class="stat-text">Vehicles</div>
+                        </div>
+                    </div>
+
+                    <!-- Profile Menu -->
+                    <div class="profile-menu">
+                        <div class="menu-section">
+                            <div class="menu-item" onclick="viewDocuments()">
+                                <div class="menu-icon">📄</div>
+                                <div class="menu-content">
+                                    <span class="menu-title">Documents</span>
+                                    <span class="menu-subtitle">License, RC, Insurance</span>
+                                </div>
+                                <span class="menu-arrow">›</span>
+                            </div>
+                            <div class="menu-item" onclick="viewRewards()">
+                                <div class="menu-icon">🏆</div>
+                                <div class="menu-content">
+                                    <span class="menu-title">Rewards & Offers</span>
+                                    <span class="menu-subtitle">Redeem points, view offers</span>
+                                </div>
+                                <span class="menu-arrow">›</span>
+                            </div>
+                            <div class="menu-item" onclick="viewSettings()">
+                                <div class="menu-icon">⚙️</div>
+                                <div class="menu-content">
+                                    <span class="menu-title">Settings</span>
+                                    <span class="menu-subtitle">Preferences, notifications</span>
+                                </div>
+                                <span class="menu-arrow">›</span>
+                            </div>
+                            <div class="menu-item" onclick="getSupport()">
+                                <div class="menu-icon">❓</div>
+                                <div class="menu-content">
+                                    <span class="menu-title">Help & Support</span>
+                                    <span class="menu-subtitle">FAQs, contact us</span>
+                                </div>
+                                <span class="menu-arrow">›</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- App Version -->
+                    <div class="app-version">
+                        <p>Maruti Suzuki SuperApp</p>
+                        <p>Version 2.4.1</p>
+                    </div>
+                </section>
+            </main>
+
+            <!-- Bottom Tab Bar -->
+            <nav class="bottom-tab-bar">
+                <button class="tab-btn active" data-tab="homeTab">
+                    <div class="tab-icon">🏠</div>
+                    <span class="tab-label">Home</span>
+                </button>
+                <button class="tab-btn" data-tab="carsTab">
+                    <div class="tab-icon">🚗</div>
+                    <span class="tab-label">Cars</span>
+                </button>
+                <button class="tab-btn" data-tab="connectTab">
+                    <div class="tab-icon">📡</div>
+                    <span class="tab-label">Connect</span>
+                </button>
+                <button class="tab-btn" data-tab="servicesTab">
+                    <div class="tab-icon">🔧</div>
+                    <span class="tab-label">Services</span>
+                </button>
+                <button class="tab-btn" data-tab="profileTab">
+                    <div class="tab-icon">👤</div>
+                    <span class="tab-label">Profile</span>
+                </button>
+            </nav>
+
+            <!-- Home Indicator -->
+            <div class="home-indicator"></div>
+        </div>
+
+        <!-- Floating Chatbot Icon -->
+        <div class="chatbot-float" id="chatbotFloat" onclick="openChatbot()">
+            <div class="chatbot-icon">🤖</div>
+            <div class="notification-dot" id="chatNotificationDot"></div>
+        </div>
+    </div>
+
+    <!-- Chatbot Modal -->
+    <div class="chatbot-modal hidden" id="chatbotModal">
+        <div class="chatbot-overlay" onclick="closeChatbot()"></div>
+        <div class="chatbot-container">
+            <!-- Chatbot Header -->
+            <div class="chatbot-header">
+                <div class="chatbot-header-content">
+                    <div class="chatbot-title">
+                        <span class="chatbot-avatar">🤖</span>
+                        <div class="chatbot-info">
+                            <h3>Hey Maruti AI Assistant</h3>
+                            <span class="chatbot-status">Online</span>
+                        </div>
+                    </div>
+                    <button class="chatbot-close" onclick="closeChatbot()">×</button>
+                </div>
+            </div>
+
+            <!-- Chat Messages -->
+            <div class="chat-messages" id="chatMessages">
+                <!-- Messages will be populated by JavaScript -->
+            </div>
+
+            <!-- Typing Indicator -->
+            <div class="typing-indicator hidden" id="typingIndicator">
+                <div class="typing-avatar">🤖</div>
+                <div class="typing-bubble">
+                    <div class="typing-dots">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Replies -->
+            <div class="quick-replies" id="quickReplies">
+                <!-- Quick reply buttons will be populated by JavaScript -->
+            </div>
+
+            <!-- Chat Input -->
+            <div class="chat-input-container">
+                <div class="chat-input-wrapper">
+                    <input type="text" class="chat-input" id="chatInput" placeholder="Type your message..." maxlength="500">
+                    <button class="send-button" id="sendButton" onclick="sendMessage()">
+                        <span class="send-icon">➤</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notifications -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- Modals and Overlays -->
+    <div class="modal-overlay" id="modalOverlay"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>
